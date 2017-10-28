@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= name %> - Ticklay</title>
+</head>
+<body>
+<h1> Ticklay </h1>
+<h2> <%= name %> </h2>
+
+<% if (hasBack) { %>
+	<h3><a href="#!back" onclick="bk();">Back</a></h3>
+<% } %>
+
+<ul>
+	<% for (it of items) {%>
+		<li>
+			<% if (it.isList) { %>
+				<b> <a href="#!<%=it.id%>" onclick="go('<%=it.id%>')"> <%= it.name %> </a> </b>
+			<% } else { %>
+				<%= it.name %>
+			<% } %>	
+		</li>
+	<% } %>
+</ul>
+</body>
+<script>
+function go(id)
+{
+	var pn = window.location.pathname;
+	window.location = pn + "/" + id;
+}
+
+function bk()
+{
+	var pn = window.location.pathname;
+	var pieces = pn.split("/");
+	pieces.pop();
+	window.location = pieces.join("/");
+}
+</script>
+</html>

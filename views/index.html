@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ticklay</title>
+</head>
+<body>
+<h1> Ticklay </h1>
+<input type="text" placeholder="Checklist name" id="nm"><button onclick="go();">Let's go!</button>
+</body>
+<script>
+function prefix(len)
+{
+	var text = "";
+	var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (var i = 0; i < len; i++)
+	{
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+
+	return text;
+}
+
+function go()
+{
+	var pref = prefix(3);
+	var text = nm.value.replace(" ", "-").replace("_", "-").replace(".", "-").replace(/[^A-Za-z0-9\-]/g, '').toLowerCase();
+	var final = pref + "-" + text;
+	window.location = "/" + final;
+}
+</script>
+</html>
